@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block content %}
+    <center>
+        <h1>Login </h1><br>
+        <form method="post">
+            {% csrf_token %}
+            <input type="email" name="loginemail" placeholder="Your Email">
+            <input type="password" name="loginpassword" placeholder="Password">
+            <hr>
+            <center><p style="font-size: 14px;color: #666;">Account Type</p></center>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="role" value="Author">Author
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="role" value="Publisher">Publisher
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="role" value="Editor">Editor
+                </label>
+            </div>
+            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+        </form>
+        <div class="login-help">
+            <a href="#">Forgot Password?</a>
+        </div>
+    </center>
+{% endblock %}

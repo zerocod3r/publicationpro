@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block content %}
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h2>Sign up</h2>
+        <ul>
+            <li>Name        : <input type="text" name="name"  title="Name"></li>
+            <li>Email       : <input type="email" name="email" title="Email"></li>
+            <li>Password    : <input type="password" name="password" title="Password"></li>
+            <li>Re-Password : <input type="password" name="cpassword" title="RePassword"></li>
+        </ul>
+    </div>
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}

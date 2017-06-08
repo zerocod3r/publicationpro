@@ -1,0 +1,129 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PublicationPlatfrom</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="script" href="{% static 'js/common.js' %}">
+</head>
+<body>
+<header>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-offset-1 nav-heading"><h1><a href="index.html">Publication Portal</a></h1></div>
+
+        </div>
+
+        <div class="row">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                aria-expanded="false" aria-controls="navbar" data-target="#navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand visible-xs-inline-block" href="{% url 'homepage' %}">Home</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse " id="navbar">
+                        <ul class="nav navbar-nav ">
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li><a href="#aboutus">About Us</a></li>
+                            <li><a href="#authors">Authors</a></li>
+                            <li><a href="#editors">Editors</a></li>
+                            <li><a href="#contactus">Contact Us</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="{% url 'login_user' %}">Login</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'signup_user' %}">Sign Up</a>
+
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+
+            </nav>
+        </div>
+    </div>
+
+</header>
+<section>
+    {% block head %}{% endblock %}
+    {% block content %}{% endblock %}
+</section>
+<footer>
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-xs-6 col-sm-4 col-sm-offset-1">
+                <ul class="list-unstyled">
+                    <li><a href="#">Authors</a></li>
+                    <li><a href="#">Editors</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#">General Knowledge</a></li>
+                    <li><a href="#">Technology</a></li>
+
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+                <ul class="list-unstyled">
+                    <li><a href="#">Others</a></li>
+                    <li><a href="#">Recents</a></li>
+                    <li><a href="#">Join Us</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">About Us</a></li>
+
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <p>Our Address:</p>
+                <p>Dwarka Sector-16B,<br/> GGSIPU New Delhi<br/> India</p>
+
+            </div>
+            <div class="col-xs-10 col-xs-offset-1">
+                <hr>
+            </div>
+
+            <div class="col-xs-10 col-xs-offset-2">
+                <p>Connect Us:</p>
+                <div class="nav navbar-nav">
+                    <a class="btn btn-social-icon btn-google-plus"
+                       href="https://plus.google.com/u/0/108957068994428220120"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/deepanshu.gupta.50767"><i
+                            class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-linkedin"
+                       href="https://www.linkedin.com/in/deepanshu-gupta-480536bb"><i class="fa fa-linkedin"></i></a>
+                    <a class="btn btn-social-icon btn-twitter" href="https://twitter.com/deepu_0009"><i
+                            class="fa fa-twitter"></i></a>
+                    <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                </div>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1">
+                <hr>
+            </div>
+
+            <div class="col-xs-12">
+
+                <center>
+                    <p>Copyright &copy; PUBLICATION 2016</p>
+                </center>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
