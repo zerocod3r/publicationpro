@@ -16,15 +16,25 @@ def signup_user(request):
     if request.method == 'POST':
         success = False
         form = SignUpForm(request.POST)
+        form.role = str(request.POST.get('role'))
         if form.is_valid():
-            p = UserSignup(
-                name=form.cleaned_data.get('name'),
-                email=form.cleaned_data.get('email'),
-                password=form.cleaned_data.get('password')
-            )
-            p.save()
-            success = True
-        return render(request, 'regcheck.html', {'success': success})
+            if form.role == "Author":
+                p = UserSignup(
+                    name=form.cleaned_data.get('name'),
+                    email=form.cleaned_data.get('email'),
+                    password=form.cleaned_data.get('password')
+                )
+                p.save()
+                success = True
+            elif form.role == "Publisher":
+                p = PubSignup(
+                    name=form.cleaned_data.get('name'),
+                    email=form.cleaned_data.get('email'),
+                    password=form.cleaned_data.get('password')
+                )
+                p.save()
+                success = True
+            return render(request, 'regcheck.html', {'success': success})
 
     return render(request, 'registration.html')
 
@@ -88,3 +98,11 @@ def logout(request):
     except:
         pass
     return redirect('/')
+
+
+def edit_profile(request):
+    return redirect('/')
+
+
+
+

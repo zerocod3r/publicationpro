@@ -25,5 +25,7 @@ urlpatterns = [
     url(r'^userdashboard/$', views.dashboard_user, name='userdashboard'),
     url(r'^publisherdashboard/$', views.dashboard_publisher, name='publisherdashboard'),
     url(r'^logout/$', views.logout, name='logout'),
+    url(r'^userdashboard/editprofile/$', views.edit_profile, name='edit_profile'),
+
     # url(r'^registration/regcheck/$', views.signup_user, name='signup_check'),
 ]

@@ -8,6 +8,7 @@ class SignUpForm(forms.Form):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
     name = forms.CharField(max_length=100, required=False, help_text='Required.')
     password = forms.CharField(max_length=1000, required=False, help_text='Required.')
+    role = forms.CharField()
 
     def clean(self):
         cleaned_data = super(SignUpForm, self).clean()
