@@ -23,6 +23,7 @@ from PublicationPlatform import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home_page, name='homepage'),
+    url(r'^contactus/$', views.contactus, name='contactus'),
     url(r'^registration/$', views.signup_user, name='signup_user'),
     url(r'^login/$', views.loginForm, name='login_user'),
     url(r'^userdashboard/$', views.dashboard_user, name='userdashboard'),

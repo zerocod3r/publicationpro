@@ -72,3 +72,10 @@ class SaveManuscriptDetails(forms.Form):
 
 class UpdateStatusManuscript(forms.Form):
     status = forms.CharField()
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, required=False, help_text='Required.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    #phone = forms.CharField(max_length=13, help_text='Required.')
+    message = forms.CharField(max_length=1000, help_text='Required.', widget=forms.Textarea)
