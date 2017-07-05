@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>PublicationPlatfrom</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/common.css' %}">
-    <link rel="script" href="{% static 'js/common.js' %}">
+    <link href="{% static 'styles/custom-Styles.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/bootstrap-theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/bootstrap-social.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/custom-Styles-2.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/contact-styles.css' %}" rel="stylesheet">
+
+
 </head>
 <body>
 <header>
@@ -16,7 +20,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-sm-offset-1 nav-heading"><h1><a href="index.html">Publication Portal</a></h1></div>
+            <div class="col-sm-offset-1 nav-heading"><h1><a href="{% url 'homepage' %}">Publication Portal</a></h1></div>
 
         </div>
 

@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from mainapp import views
+from PublicationPlatform import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,7 +28,15 @@ urlpatterns = [
     url(r'^userdashboard/$', views.dashboard_user, name='userdashboard'),
     url(r'^publisherdashboard/$', views.dashboard_publisher, name='publisherdashboard'),
     url(r'^logout/$', views.logout, name='logout'),
-    url(r'^userdashboard/editprofile/$', views.edit_profile, name='edit_profile'),
+    url(r'^userdashboard/editprofile/$', views.user_profile, name='user_profile'),
+    url(r'^publisherdashboard/editprofile/$', views.publisher_profile, name='publisher_profile'),
+    url(r'^userdashboard/home/$', views.user_home, name='user_home'),
+    url(r'^publisherdashboard/home/$', views.publisher_home, name='publisher_home'),
+    url(r'^userdashboard/checkapplication/$', views.checkApplication, name='checkapplication'),
+    url(r'^userdashboard/home/submit/(?P<slug>[-\w]+)/$', views.single_post, name='single_post'),
+    url(r'^publisherdashboard/home/review/(?P<slug>[-\w]+)/$', views.reviewapplication, name='reviewapplication')
 
     # url(r'^registration/regcheck/$', views.signup_user, name='signup_check'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

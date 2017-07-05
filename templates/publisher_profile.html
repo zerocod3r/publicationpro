@@ -1,0 +1,328 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Deepanshu Gupta">
+
+    <title>Home - Publication</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'styles/custom-Styles.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/bootstrap-theme.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/bootstrap-social.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-offset-1 nav-heading"><h1><a href="{% url 'homepage' %}">Publication Portal</a></h1></div>
+
+        </div>
+
+        <div class="row">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                aria-expanded="false" aria-controls="navbar" data-target="#navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand visible-xs-inline-block" href="{% url 'publisher_home' %}">Home</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse " id="navbar">
+                        <ul class="nav navbar-nav ">
+                            <li><a href="{% url 'publisher_home' %}">Home</a></li>
+                            <li><a href="{% url 'publisherdashboard' %}">Dashboard</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">
+                                    Settings<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'publisher_profile' %}">Edit Profile</a></li>
+                                    <li><a href="{% url 'logout' %}">Sign Out</a></li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
+        </div>
+    </div>
+
+</header>
+<style>
+    .user-row {
+        margin-bottom: 14px;
+    }
+
+    .user-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .dropdown-user {
+        margin: 13px 0;
+        padding: 5px;
+        height: 100%;
+    }
+
+    .dropdown-user:hover {
+        cursor: pointer;
+    }
+
+    .table-user-information > tbody > tr {
+        border-top: 1px solid rgb(221, 221, 221);
+    }
+
+    .table-user-information > tbody > tr:first-child {
+        border-top: 0;
+    }
+
+    .table-user-information > tbody > tr > td {
+        border-top: 0;
+    }
+
+    .toppad {
+        margin-top: 20px;
+    }
+
+</style>
+<div class="container-fluid">
+    <div class="">
+
+        {% if success %}
+            <h4 style="color: green">Profile Updated</h4>
+        {% endif %}
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ op.name }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center">
+                        {% if op.publisherprofile.photo %}
+                        <img alt="Publisher Pic" src="{{ op.publisherprofile.photo.url }}"
+                                                                        class="img-circle img-responsive">
+                        {% else %}
+                            <img alt="user pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
+                                                                        class="img-circle img-responsive">
+                        {% endif %}
+                    </div>
+
+                    <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                      <dl>
+                        <dt>DEPARTMENT:</dt>
+                        <dd>Administrator</dd>
+                        <dt>HIRE DATE</dt>
+                        <dd>11/12/2013</dd>
+                        <dt>DATE OF BIRTH</dt>
+                           <dd>11/12/2013</dd>
+                        <dt>GENDER</dt>
+                        <dd>Male</dd>
+                      </dl>
+                    </div>-->
+                    <div class=" col-md-9 col-lg-9 ">
+                        <table class="table table-user-information">
+                            <tbody>
+                            <tr>
+                                <td>Full Name:</td>
+                                <td>{{ op.publisherprofile.full_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>{{ op.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Company:</td>
+                                <td>{{ op.publisherprofile.cmpny_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Website:</td>
+                                <td>{{ op.publisherprofile.cmpny_website }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Experience:</td>
+                                <td>{{ op.publisherprofile.aboutcmpny }}</td>
+                            </tr>
+                            <tr>
+                                <td>Company Address:</td>
+                                <td>{{ op.publisherprofile.cmpny_address }}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number:</td>
+                                <td>{{ op.publisherprofile.phoneno }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container" style="padding-top: 60px;">
+            <h1 class="page-header">Edit Profile</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="text-center">
+                            <img src="" class="avatar img-circle img-thumbnail" alt="default">
+                            <h6>Upload a different photo...</h6>
+                            <input type="file" class="text-center center-block well well-sm" name="profileimage">
+                        </div>
+                    </div>
+                    <!-- edit form column -->
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <a class="panel-close close" data-dismiss="alert">×</a>
+                            <i class="fa fa-coffee"></i>
+                            Please Enter the <strong>valid</strong> details.
+                        </div>
+                        <h3>Personal info</h3>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Full name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" required placeholder="name" type="text" name="fullname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Company:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" required placeholder="company name" type="text" name="companyname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Website:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" required placeholder="www.example.com" type="text"
+                                       name="companywebsite">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">About Company:</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" required name="aboutcmpny"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Company Address:</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" required name="address" placeholder="Address"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Phone No:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" required pattern="[789][0-9]{9}" name="phoneno" placeholder="eg. 9923XXXXXX">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8">
+                                <input class="btn btn-primary" type="submit" value="Save Changes">
+                                <span></span>
+                                <input class="btn btn-default" value="Cancel" type="reset">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <footer style="margin-top:30px;">
+            <div class="container-fluid">
+
+                <div class="row" style="padding-top: 50px;">
+                    <div class="col-xs-6 col-sm-4 col-sm-offset-1">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Authors</a></li>
+                            <li><a href="#">Editors</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#">General Knowledge</a></li>
+                            <li><a href="#">Technology</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Others</a></li>
+                            <li><a href="#">Recents</a></li>
+                            <li><a href="#">Join Us</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">About Us</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <p>Our Address:</p>
+                        <p>Dwarka Sector-16B,<br/> GGSIPU New Delhi<br/> India</p>
+
+                    </div>
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <hr>
+                    </div>
+
+                    <div class="col-xs-10 col-xs-offset-2">
+                        <p>Connect Us:</p>
+                        <div class="nav navbar-nav">
+                            <a class="btn btn-social-icon btn-google-plus"
+                               href="https://plus.google.com/u/0/108957068994428220120"><i
+                                    class="fa fa-google-plus"></i></a>
+                            <a class="btn btn-social-icon btn-facebook"
+                               href="https://www.facebook.com/deepanshu.gupta.50767"><i class="fa fa-facebook"></i></a>
+                            <a class="btn btn-social-icon btn-linkedin"
+                               href="https://www.linkedin.com/in/deepanshu-gupta-480536bb"><i
+                                    class="fa fa-linkedin"></i></a>
+                            <a class="btn btn-social-icon btn-twitter" href="https://twitter.com/deepu_0009"><i
+                                    class="fa fa-twitter"></i></a>
+                            <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <hr>
+                    </div>
+
+                    <div class="col-xs-12">
+
+                        <center>
+                            <p>Copyright &copy; PUBLICATION 2016</p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+
+</html>
